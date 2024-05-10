@@ -1,14 +1,9 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from rest_framework import routers
 from .api import ProjectViewSet
 
-# Definir el enrutador
-router = DefaultRouter()
-router.register('projects', ProjectViewSet)
+router = routers.DefaultRouter()
 
-# Definir las URLs
-urlpatterns = [
-    # Incluir las URLs del enrutador
-    path('api/', include(router.urls)),
-]
+router.register('api/projects', ProjectViewSet, 'projects')
+
+urlpatterns = router.urls
 
